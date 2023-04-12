@@ -43,7 +43,7 @@ public class AuthenticationService {
                                 new UsernamePasswordAuthenticationToken(
                                                 request.getEmail(),
                                                 request.getPassword()));
-                var user = repository.findByEmail("test2@gmail.com")
+                var user = repository.findByEmail(request.getEmail())
                                 .orElseThrow();
                 var jwtToken = jwtService.generateToken(user);
                 return AuthenticationResponse
